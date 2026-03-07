@@ -1,4 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+// Fix for default marker icons in React Leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+
+// Custom marker icon (optional - you can use this for a premium look)
+const customIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
 
 // ===== FAQ DATA =====
 const faqs = [
@@ -28,29 +49,42 @@ const faqs = [
 const offices = [
     {
         city: "Trichy",
-        address: "15, Pali Hill Road, Bandra West",
+        address: "15, Pali Hill Road, Bandra West, Trichy",
         phone: "+91 22 1234 5678",
         email: "Trichy@stewdec.com",
         hours: "Mon-Sat: 10am - 7pm",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUW0ktQMBplQn-ArwIq-S6hKxfdt_neqCQKg&s",
+        coordinates: [10.7905, 78.7047], // Trichy coordinates
+        googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Trichy,Tamil+Nadu"
     },
     {
         city: "Karur",
-        address: "42, Khan Market,",
+        address: "42, Khan Market, Karur",
         phone: "+91 11 2345 6789",
         email: "Karur@stewdec.com",
         hours: "Mon-Sat: 10am - 7pm",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB6MmtpMBiovlgO5c4VH-cNHELWkYMapxJkg&s",
+        coordinates: [10.9602, 78.0766], // Karur coordinates
+        googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Karur,Tamil+Nadu"
     },
     {
         city: "Vilathikulam",
-        address: "7, Lake Palace Road",
+        address: "7, Lake Palace Road, Vilathikulam",
         phone: "+91 294 123 4567",
         email: "Vilathikulam@stewdec.com",
         hours: "Mon-Sat: 10am - 6pm",
         image: "data:image/jpeg;base64,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",
+        coordinates: [9.1667, 78.1667], // Vilathikulam approximate coordinates
+        googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Vilathikulam,Tamil+Nadu"
     },
 ];
+
+// Component to handle map view changes when office changes
+const ChangeMapView = ({ center }) => {
+    const map = useMap();
+    map.setView(center, 15);
+    return null;
+};
 
 // Social media icons as components
 const InstagramIcon = ({ className = "w-5 h-5" }) => (
@@ -145,13 +179,10 @@ const ContactPage = () => {
         setExpandedFaq(expandedFaq === index ? null : index);
     };
 
-    // Simulate map loading
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsMapLoaded(true);
-        }, 1000);
-        return () => clearTimeout(timer);
-    }, []);
+    // Handle get directions
+    const handleGetDirections = () => {
+        window.open(offices[activeOffice].googleMapsLink, '_blank');
+    };
 
     return (
         <div className="font-serif bg-black pt-16 md:pt-20 lg:pt-24">
@@ -433,29 +464,32 @@ const ContactPage = () => {
 
                         {/* Map & Office Info */}
                         <div className="animate-fadeInRight order-1 lg:order-2">
-                            {/* Map Placeholder */}
+                            {/* Map */}
                             <div className="bg-gray-800 rounded-xl lg:rounded-2xl overflow-hidden shadow-xl mb-6 sm:mb-7 lg:mb-8 h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 relative">
-                                {!isMapLoaded ? (
-                                    <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
-                                        <div className="text-center">
-                                            <svg className="animate-spin h-8 w-8 sm:h-10 sm:w-10 text-amber-600 mx-auto mb-2 sm:mb-3" fill="none" viewBox="0 0 24 24">
-                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                            </svg>
-                                            <p className="text-gray-400 text-xs sm:text-sm">Loading map...</p>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <img
-                                        src={`https://maps.googleapis.com/maps/api/staticmap?center=${encodeURIComponent(
-                                            offices[activeOffice].address
-                                        )}&zoom=15&size=800x400&maptype=roadmap&markers=color:red%7C${encodeURIComponent(
-                                            offices[activeOffice].address
-                                        )}&key=YOUR_API_KEY`}
-                                        alt={`Map of ${offices[activeOffice].city}`}
-                                        className="w-full h-full object-cover"
+                                <MapContainer
+                                    center={offices[activeOffice].coordinates}
+                                    zoom={13}
+                                    scrollWheelZoom={false}
+                                    style={{ height: '100%', width: '100%' }}
+                                    className="z-10"
+                                >
+                                    <TileLayer
+                                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     />
-                                )}
+                                    <Marker
+                                        position={offices[activeOffice].coordinates}
+                                        icon={customIcon}
+                                    >
+                                        <Popup>
+                                            <div className="text-center">
+                                                <strong>{offices[activeOffice].city} Studio</strong><br />
+                                                {offices[activeOffice].address}
+                                            </div>
+                                        </Popup>
+                                    </Marker>
+                                    <ChangeMapView center={offices[activeOffice].coordinates} />
+                                </MapContainer>
                             </div>
 
                             {/* Office Selector */}
@@ -515,7 +549,10 @@ const ContactPage = () => {
                                     </div>
                                 </div>
 
-                                <button className="mt-4 sm:mt-5 lg:mt-6 w-full bg-amber-700 hover:bg-amber-600 text-white py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm rounded-lg transition">
+                                <button
+                                    onClick={handleGetDirections}
+                                    className="mt-4 sm:mt-5 lg:mt-6 w-full bg-amber-700 hover:bg-amber-600 text-white py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm rounded-lg transition"
+                                >
                                     Get Directions
                                 </button>
                             </div>
@@ -602,7 +639,7 @@ const ContactPage = () => {
                     </div>
 
                     {/* Instagram Feed Preview */}
-                    <div className="grid grid-cols-2  md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
                         {[1, 2, 3, 4].map((item) => (
                             <div key={item} className="relative group overflow-hidden rounded-lg aspect-square">
                                 <img
@@ -612,10 +649,11 @@ const ContactPage = () => {
                                                 "1469371670807-013ccf25f16a"
                                         }?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80`}
                                     alt="Instagram feed"
-                                    className="w-full h-full  object-cover transition-transform duration-500 group-hover:scale-110"
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                     loading="lazy"
                                 />
-                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <InstagramIcon className="w-8 h-8 text-white" />
                                 </div>
                             </div>
                         ))}
