@@ -186,46 +186,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* ===== CONTACT / CTA ===== */}
-            <section id="contact" className="py-16 md:py-24 lg:py-32 bg-white">
-                <div className="container mx-auto px-4 md:px-6 text-center max-w-3xl">
-                    <p className="text-amber-700 text-xs md:text-sm uppercase tracking-[3px] md:tracking-[4px] mb-2 md:mb-4">
-                        Begin the journey
-                    </p>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light mb-4 md:mb-6">
-                        Let's Craft Your Dream
-                    </h2>
-                    <div className="w-16 md:w-20 h-px bg-amber-300 mx-auto mb-6 md:mb-12"></div>
-                    <p className="text-gray-600 text-base md:text-lg mb-6 md:mb-12 px-4">
-                        Reach out for a consultation. We'll listen to your vision and plan every detail together.
-                    </p>
-                    <form className="space-y-4 md:space-y-6 px-4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                            <input
-                                type="text"
-                                placeholder="Your name"
-                                className="w-full border border-gray-300 px-3 md:px-4 py-2 md:py-3 text-sm md:text-base focus:outline-none focus:border-amber-700 transition rounded-md"
-                            />
-                            <input
-                                type="email"
-                                placeholder="Email address"
-                                className="w-full border border-gray-300 px-3 md:px-4 py-2 md:py-3 text-sm md:text-base focus:outline-none focus:border-amber-700 transition rounded-md"
-                            />
-                        </div>
-                        <textarea
-                            rows="4"
-                            placeholder="Tell us about your vision..."
-                            className="w-full border border-gray-300 px-3 md:px-4 py-2 md:py-3 text-sm md:text-base focus:outline-none focus:border-amber-700 transition rounded-md"
-                        ></textarea>
-                        <button
-                            type="submit"
-                            className="bg-amber-700 hover:bg-amber-800 text-white text-xs md:text-sm uppercase tracking-[2px] md:tracking-[3px] py-3 md:py-4 px-8 md:px-16 transition duration-300 rounded-md"
-                        >
-                            Send inquiry
-                        </button>
-                    </form>
-                </div>
-            </section>
+            
 
             {/* ===== FOOTER ===== */}
             <footer className="bg-gray-900 text-gray-400 py-12 md:py-16">
