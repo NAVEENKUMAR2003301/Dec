@@ -597,7 +597,7 @@ const ContactPage = () => {
                                     </svg>
                                 </button>
                                 {expandedFaq === index && (
-                                    <div className="px-4 sm:px-5 lg:px-6 pb-3 sm:pb-4 text-gray-400 text-xs sm:text-sm animate-fadeIn border-t border-gray-800">
+                                    <div className="px-4 py-3 sm:px-5 lg:px-6 pb-3 sm:pb-4 text-gray-400 text-xs sm:text-sm animate-fadeIn border-t border-gray-800">
                                         {faq.answer}
                                     </div>
                                 )}
