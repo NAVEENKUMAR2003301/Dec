@@ -36,7 +36,7 @@ const offices = [
     },
     {
         city: "Karur",
-        address: "42, Khan Market, New Delhi - 110003",
+        address: "42, Khan Market,",
         phone: "+91 11 2345 6789",
         email: "Karur@stewdec.com",
         hours: "Mon-Sat: 10am - 7pm",
@@ -44,7 +44,7 @@ const offices = [
     },
     {
         city: "Vilathikulam",
-        address: "7, Lake Palace Road, Udaipur - 313001",
+        address: "7, Lake Palace Road",
         phone: "+91 294 123 4567",
         email: "Vilathikulam@stewdec.com",
         hours: "Mon-Sat: 10am - 6pm",
@@ -232,7 +232,7 @@ const ContactPage = () => {
                             </div>
                             <h3 className="text-base sm:text-lg lg:text-xl font-serif mb-1 sm:mb-2">Visit Us</h3>
                             <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3 lg:mb-4">Three locations</p>
-                            <p className="text-amber-700 text-xs sm:text-sm lg:text-base">Mumbai • Delhi • Udaipur</p>
+                            <p className="text-amber-700 text-xs sm:text-sm lg:text-base">Trichy • Karur • Vilathikulam</p>
                         </div>
                     </div>
                 </div>
