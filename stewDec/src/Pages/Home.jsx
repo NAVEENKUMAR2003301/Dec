@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import tw from "../../public/icons/tw.png"
+import inn from "../../public/icons/in.png"
+import fa from "../../public/icons/fa.png"
 // Icon components for better visual representation
 const InstagramIcon = () => (
     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -258,13 +260,19 @@ const Home = () => {
                         <h4 className="text-white text-xs md:text-sm uppercase tracking-[3px] mb-4">Follow</h4>
                         <div className="flex justify-center sm:justify-start space-x-4">
                             <a href="#" className="text-gray-400 hover:text-amber-500 transition">
-                                <InstagramIcon />
+                                <img src={tw} 
+                                alt="twitter"
+                                className="w-[30px] h-[30px] bg-amber-100 border rounded-3xl hover:bg-amber-200" />
                             </a>
                             <a href="#" className="text-gray-400 hover:text-amber-500 transition">
-                                <FacebookIcon />
+                                <img src={inn}
+                                    alt="instagram"
+                                    className="w-[30px] h-[30px]  bg-amber-100 border rounded-3xl hover:bg-amber-200" />
                             </a>
                             <a href="#" className="text-gray-400 hover:text-amber-500 transition">
-                                <PinterestIcon />
+                                <img src={fa}
+                                    alt="facebook"
+                                    className="w-[30px] h-[30px]  bg-amber-100 border rounded-3xl hover:bg-amber-200" />
                             </a>
                         </div>
                     </div>

@@ -2,6 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { Link } from "react-router-dom";
+import inn from "../../public/icons/in.png"
+import fa from "../../public/icons/fa.png"
+import li from "../../public/icons/li.png"
 
 // Fix for default marker icons in React Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -622,19 +626,19 @@ const ContactPage = () => {
                             href="#"
                             className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gray-800 rounded-full flex items-center justify-center hover:bg-amber-700 text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110"
                         >
-                            <InstagramIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
+                            <img src={inn} className=" bg-white rounded-3xl w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" alt="instagram"/>
                         </a>
                         <a
                             href="#"
                             className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gray-800 rounded-full flex items-center justify-center hover:bg-amber-700 text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110"
                         >
-                            <FacebookIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
+                            <img src={li} className=" bg-white rounded-3xl w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" alt="instagram" />
                         </a>
                         <a
                             href="#"
                             className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gray-800 rounded-full flex items-center justify-center hover:bg-amber-700 text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110"
                         >
-                            <TwitterIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
+                            <img src={fa} className=" bg-white rounded-3xl w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" alt="instagram" />
                         </a>
                     </div>
 
@@ -653,8 +657,9 @@ const ContactPage = () => {
                                     loading="lazy"
                                 />
                                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <InstagramIcon className="w-8 h-8 text-white" />
-                                </div>
+                                    <a href="#">        
+                                        <img src={inn} className="w-8 h-8 text-white bg-amber-50 rounded-2xl" />
+</a>                                </div>
                             </div>
                         ))}
                     </div>
@@ -670,12 +675,12 @@ const ContactPage = () => {
                     <p className="text-sm sm:text-base lg:text-xl text-amber-200 max-w-2xl mx-auto mb-6 sm:mb-7 lg:mb-10 px-4">
                         Let's bring your vision to life. Book your complimentary consultation today.
                     </p>
-                    <a
-                        href="#"
+                    <Link
+                        to="/consultation"
                         className="inline-block bg-white text-amber-900 hover:bg-amber-100 px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 transform hover:scale-105 rounded-lg"
                     >
                         Schedule a Call
-                    </a>
+                    </Link>
                 </div>
             </section>
         </div>

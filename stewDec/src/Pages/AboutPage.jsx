@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import '../index.css'
+import li from "../../public/icons/li.png"
+import fa from "../../public/icons/fa.png"
+
 
 // ===== TEAM MEMBER DATA =====
 const teamMembers = [
@@ -112,10 +115,10 @@ const testimonials = [
 
 // ===== STATS DATA =====
 const stats = [
-    { label: "Weddings Designed", value: 1000, suffix: "+", icon: "💍" },
-    { label: "Happy Couples", value: 2000, suffix: "+", icon: "💑" },
-    { label: "Years Experience", value: 13, suffix: "", icon: "✨" },
-    { label: "Luxury Venues", value: 50, suffix: "+", icon: "🏰" },
+    { label: "Weddings Designed", value: 1000, suffix: "+", icon: "🩷" },
+    { label: "Happy Couples", value: 2000, suffix: "+", icon: "🪷" },
+    { label: "Years Experience", value: 13, suffix: "", icon: "🐦‍🔥" },
+    { label: "Luxury Venues", value: 50, suffix: "+", icon: "🫶🏻" },
 ];
 
 // ===== VALUE PROPOSITIONS =====
@@ -598,7 +601,7 @@ const TeamCard = ({ member, index, onClick }) => {
                         <h3 className="text-base sm:text-lg lg:text-xl font-serif mb-0.5 sm:mb-1">{member.name}</h3>
                         <p className="text-amber-300 text-xs sm:text-sm mb-2 sm:mb-3">{member.role}</p>
                         <p className="text-xs sm:text-sm text-gray-200 mb-3 sm:mb-4 line-clamp-3">{member.bio}</p>
-                        <div className="flex space-x-2 sm:space-x-3">
+                        {/* <div className="flex space-x-2 sm:space-x-3">
                             <a href={member.social.instagram} className="hover:text-amber-300 transition">
                                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.11 2.525c.636-.247 1.363-.416 2.427-.465C8.83 2.013 9.175 2 12 2z" />
@@ -609,15 +612,15 @@ const TeamCard = ({ member, index, onClick }) => {
                                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                                 </svg>
                             </a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
                 {/* Name (visible when not hovered) */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
+                {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
                     <h3 className="text-white text-sm sm:text-base lg:text-lg font-serif">{member.name}</h3>
                     <p className="text-amber-300 text-xs">{member.role}</p>
-                </div>
+                </div> */}
             </div>
         </div>
     );
@@ -813,14 +816,11 @@ const TeamModal = ({ member, onClose }) => {
                             <h3 className="text-xs sm:text-sm uppercase tracking-wider text-gray-400 mb-2 sm:mb-3">Connect</h3>
                             <div className="flex space-x-3 sm:space-x-4">
                                 <a href={member.social.instagram} className="text-gray-400 hover:text-amber-500 transition">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.11 2.525c.636-.247 1.363-.416 2.427-.465C8.83 2.013 9.175 2 12 2z" />
-                                    </svg>
+                                   <img src={li} alt="linkdin" className="w-[25px] bg-amber-50 rounded-3xl hover:bg-amber-200" /> 
                                 </a>
                                 <a href={member.social.linkedin} className="text-gray-400 hover:text-amber-500 transition">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                    </svg>
+                                    <img src={fa} alt="linkdin" className="w-[25px] bg-amber-50 rounded-3xl hover:bg-amber-200" /> 
+
                                 </a>
                             </div>
                         </div>

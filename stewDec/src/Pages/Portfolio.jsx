@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import '../index.css'
+import fa from "../../public/icons/fa.png"
 
 // ===== PORTFOLIO DATA =====
 const portfolioItems = [
@@ -506,10 +507,10 @@ const Portfolio = () => {
             <section className="py-12 sm:py-16 lg:py-20 bg-gray-900">
                 <div className="container mx-auto px-4 sm:px-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 xl:gap-8 text-center">
-                        <StatCard number="150+" label="Weddings Designed" icon="💍" delay="0" />
-                        <StatCard number="12+" label="Years Experience" icon="✨" delay="200" />
-                        <StatCard number="25+" label="Luxury Venues" icon="🏰" delay="400" />
-                        <StatCard number="1000+" label="Happy Couples" icon="💑" delay="600" />
+                        <StatCard number="150+" label="Weddings Designed" icon="🩷" delay="0" />
+                        <StatCard number="12+" label="Years Experience" icon="🪷" delay="200" />
+                        <StatCard number="25+" label="Luxury Venues" icon="🐦‍🔥" delay="400" />
+                        <StatCard number="1000+" label="Happy Couples" icon="🫶🏻" delay="600" />
                     </div>
                 </div>
             </section>
