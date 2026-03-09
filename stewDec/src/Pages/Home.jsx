@@ -141,7 +141,7 @@ const Home = () => {
                 <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
                     <div className="lg:w-1/2 w-full">
                         <img
-                            src="https://www.freepik.com/free-photo/beautiful-woman-long-red-dress-walks-around-city-with-her-husband_2528863.htm#fromView=keyword&page=1&position=2&uuid=f3eec91d-9d8a-4bc9-be3d-6befc398cfa7&query=Wedding+couple"
+                            src="https://cdn.pixabay.com/photo/2020/09/19/09/40/sunset-5584004_640.jpg"
                             alt="Luxury wedding setup"
                             className="rounded-lg shadow-2xl w-full h-auto"
                             loading="lazy"
