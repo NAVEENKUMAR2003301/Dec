@@ -508,7 +508,7 @@ const Portfolio = () => {
                 <div className="container mx-auto px-4 sm:px-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 xl:gap-8 text-center">
                         <StatCard number="150+" label="Weddings Designed" icon="🩷" delay="0" />
-                        <StatCard number="12+" label="Years Experience" icon="🪷" delay="200" />
+                        <StatCard number="15+" label="Years Experience" icon="🪷" delay="200" />
                         <StatCard number="25+" label="Luxury Venues" icon="🐦‍🔥" delay="400" />
                         <StatCard number="1000+" label="Happy Couples" icon="🫶🏻" delay="600" />
                     </div>
